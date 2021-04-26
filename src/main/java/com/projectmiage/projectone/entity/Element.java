@@ -1,85 +1,89 @@
 package com.projectmiage.projectone.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "element")
  public class Element {
 	
 	@Id
-	private Long z;
+	@Column(name = "z")
+	private Long elementId;
+
+	@Column(name = "nom")
 	private String nom;
-	private String nom_courant;
-	private Integer masse_atomique;
-	private Integer famille_id; 
+
+	@Column(name = "nom_courant")
+	private String nomCourant;
+
+	@Column(name = "masse_atomique")
+	private Integer masseAtomique;
+
+	@Column(name = "etat")
 	private String etat;
-	
-	public Element(Long z, String nom, String nom_courant, Integer famille_id, Integer masse_atomique, String etat) {
-		this.z = z;
+
+	@ManyToOne
+	@JoinColumn(name = "famille_id")
+	private Famille familleId;
+
+	public Element(Long elementId, String nom, String nomCourant, Integer masseAtomique, String etat, Famille famille_id) {
+		this.elementId = elementId;
 		this.nom = nom;
-		this.nom_courant = nom_courant;
-		this.famille_id = famille_id;
-		this.masse_atomique = masse_atomique;
-		this.etat = etat;	
+		this.nomCourant = nomCourant;
+		this.masseAtomique = masseAtomique;
+		this.etat = etat;
+		this.familleId = familleId;
 	}
-	
+
 	public Element() {
 
 	}
-	
-	public Long getZ() {
-		return z;
+
+	public Long getElementId() {
+		return elementId;
 	}
-	
-	public void setZ(Long z) {
-		this.z = z;
+
+	public void setElementId(Long elementId) {
+		this.elementId = elementId;
 	}
-	
+
 	public String getNom() {
 		return nom;
 	}
-	
+
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	
-	public String getNom_courant() {
-		return nom_courant;
+
+	public String getNomCourant() {
+		return nomCourant;
 	}
-	
-	public void setNom_courant(String nom_courant) {
-		this.nom_courant = nom_courant;
+
+	public void setNomCourant(String nomCourant) {
+		this.nomCourant = nomCourant;
 	}
-	
-	public Integer getFamille_id() {
-		return famille_id;
+
+	public Integer getMasseAtomique() {
+		return masseAtomique;
 	}
-	
-	public void setFamille_id(Integer famille_id) {
-		this.famille_id = famille_id;
+
+	public void setMasseAtomique(Integer masseAtomique) {
+		this.masseAtomique = masseAtomique;
 	}
-	
-	public Integer getMasse_atomique() {
-		return masse_atomique;
-	}
-	
-	public void setMasse_atomique(Integer masse_atomique) {
-		this.masse_atomique = masse_atomique;
-	}
-	
+
 	public String getEtat() {
 		return etat;
 	}
-	
+
 	public void setEtat(String etat) {
 		this.etat = etat;
 	}
 
-	@Override
-	public String toString() {
-		return "Element [z=" + z + ", nom=" + nom + ", nom_courant=" + nom_courant + ", masse_atomique="
-				+ masse_atomique + ", famille_id=" + famille_id + ", etat=" + etat + "]";
+	public Famille getFamilleId() {
+		return familleId;
+	}
+
+	public void setFamilleId(Famille familleId) {
+		this.familleId = familleId;
 	}
 }

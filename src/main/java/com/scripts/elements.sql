@@ -1,28 +1,28 @@
-// Script SQL //
-// Création de la Table éléments //
+-- Script SQL --
+-- Création de la Table éléments - By Quentin Rodriguez --
 
 CREATE DATABASE Elements;
 USE Elements;
 
 CREATE TABLE Famille (
-        id smallint(5) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT, 
-        nom varchar(25) NOT NULL
+    id smallint(5) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nom varchar(25) NOT NULL
 );
 
 CREATE TABLE Element (
-        z smallint(5) UNSIGNED NOT NULL PRIMARY KEY,
-        nom varchar(3) NOT NULL,
-        nom_courant varchar(25) NOT NULL,
-        masse_atomique float(6) NOT NULL,
-        famille_id smallint(5) UNSIGNED,
-        etat varchar(10) NOT NULL
+    z smallint(5) UNSIGNED NOT NULL PRIMARY KEY,
+    nom varchar(3) NOT NULL,
+    nom_courant varchar(25) NOT NULL,
+    masse_atomique float(6) NOT NULL,
+    famille_id smallint(5) UNSIGNED,
+    etat varchar(10) NOT NULL
 );
 
 ALTER TABLE element
-        ADD INDEX(famille_id);
+ADD INDEX(famille_id);
 
 ALTER TABLE element 
-        ADD CONSTRAINT fk_famille_id_to_id FOREIGN KEY (famille_id) REFERENCES famille(id);
+ADD CONSTRAINT fk_famille_id_to_id FOREIGN KEY (famille_id) REFERENCES famille(id);
 
 INSERT INTO `famille`(`id`, `nom`) VALUES (1,'Métal Alcalin');
 INSERT INTO `famille`(`id`, `nom`) VALUES (2,'Métal Alcalino-terreux');

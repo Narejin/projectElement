@@ -1,21 +1,20 @@
 package com.projectmiage.projectone.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "famille")
 public class Famille {
 
-	@Id
-	private Long id;
+	@Id	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long familleId;
+
 	@Column(name = "nom")
 	private String nom;
-	
-	public Famille(Long id, String nom) {
-		this.id = id;
+
+	public Famille(Long familleId, String nom) {
+		this.familleId = familleId;
 		this.nom = nom;
 	}
 	
@@ -23,12 +22,12 @@ public class Famille {
 
 	}
 
-	public Long getId() {
-		return id;
+	public Long getElementId() {
+		return familleId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setElementId(Long familleId) {
+		this.familleId = familleId;
 	}
 
 	public String getNom() {
@@ -41,7 +40,7 @@ public class Famille {
 
 	@Override
 	public String toString() {
-		return "Famille [id=" + id + ", nom=" + nom + "]";
+		return "Famille [familleId=" + familleId + ", nom=" + nom + "]";
 	}
 	
 }
