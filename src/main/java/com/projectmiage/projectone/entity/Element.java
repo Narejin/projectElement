@@ -26,7 +26,7 @@ import javax.persistence.*;
 	@JoinColumn(name = "famille_id")
 	private Famille familleId;
 
-	public Element(Long elementId, String nom, String nomCourant, Integer masseAtomique, String etat, Famille famille_id) {
+	public Element(Long elementId, String nom, String nomCourant, Integer masseAtomique, String etat, Famille familleId) {
 		this.elementId = elementId;
 		this.nom = nom;
 		this.nomCourant = nomCourant;

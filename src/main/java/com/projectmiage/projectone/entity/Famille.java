@@ -22,11 +22,11 @@ public class Famille {
 
 	}
 
-	public Long getElementId() {
+	public Long getFamilleId() {
 		return familleId;
 	}
 
-	public void setElementId(Long familleId) {
+	public void setFamilleId(Long familleId) {
 		this.familleId = familleId;
 	}
 
