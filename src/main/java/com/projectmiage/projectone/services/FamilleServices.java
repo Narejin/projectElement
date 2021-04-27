@@ -40,9 +40,12 @@ public class FamilleServices {
      * @return String
      */
     @PostMapping(path = "/postFamille", consumes = "application/json")
-    public String postFamille(@RequestBody Famille famille) {
-        this.familleRepository.postFamille(famille);
-        return "La famille " + famille.getNom() + " à été ajoutée";
+        public String postFamille(@RequestBody Famille famille) {
+            Famille tartampion = this.familleRepository.postFamille(famille);
+            if(tartampion == null) {
+                return "La famille " + famille.getNom() + " existe déjà et n'a pas été ajoutée.";
+            }
+            return "La famille " + famille.getNom() + " à été ajoutée.";
     }
 
     /**

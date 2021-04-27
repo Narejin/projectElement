@@ -1,5 +1,6 @@
 package com.projectmiage.projectone.interfaces;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.projectmiage.projectone.entity.Famille;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IFamilleRepository extends JpaRepository<Famille, Long> {
 
-    public Optional<Famille> findById(Long id);
+    Optional<Famille> findById(Long id);
 
+    Optional<Famille> findByNom(String nom);
 }

@@ -23,8 +23,15 @@ public class FamilleRepository {
 		return this.repository.findById(id);
 	}
 
-	public void postFamille(Famille famille) {
-		this.repository.save(famille);
+	public Optional<Famille> getFamilleByNom(String nom) {
+		return this.repository.findByNom(nom);
+	}
+
+	public Famille postFamille(Famille famille) {
+		if(this.getFamilleByNom(famille.getNom()).isPresent()) {
+			return null;
+		}
+		return this.repository.save(famille);
 	}
 
 	public void updateFamille(Famille famille) {
