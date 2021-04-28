@@ -1,4 +1,4 @@
-package com.projectmiage.projectone.entities;
+package com.projectmiage.projectone.entity;
 
 import javax.persistence.*;
 
