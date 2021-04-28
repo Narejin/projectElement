@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import com.projectmiage.projectone.entity.Famille;
-import com.projectmiage.projectone.repository.FamilleRepository;
+import com.projectmiage.projectone.services.FamilleService;
 
 @SpringBootApplication
 @RestController
 public class ProjectoneApplication {
 	
 	@Autowired
-	FamilleRepository familleRepository;
+	FamilleService familleService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectoneApplication.class, args);
@@ -33,13 +33,12 @@ public class ProjectoneApplication {
 
 	@GetMapping("/getFamilles")
 	public List<Famille> getAllFamilles() {
-		return familleRepository.getFamilles();
+		return familleService.getFamilles();
 	}
 	
 	@GetMapping("/getFamille/{id}")
 	public Famille getOneFamille(@PathVariable Long id) {
-		return familleRepository.getFamille(id);
+		return familleService.getFamille(id);
 	}
-
 }
 

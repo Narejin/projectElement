@@ -1,27 +1,38 @@
 package com.projectmiage.projectone.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "element")
  public class Element {
 	
-	@Id
-	private Long z;
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column (name ="z")
+	private Long elementId;
+	@Column (name ="nom")
 	private String nom;
-	private String nom_courant;
-	private Integer masse_atomique;
-	private Integer famille_id; 
+	@Column (name = "nom_courant")
+	private String nomCourant;
+	@Column	(name = "masse_atomique")
+	private Integer masseAtomique;
+	@ManyToOne	@JoinColumn (name = "famille_id")
+	private Famille familleId;
+	@Column	(name ="etat")
 	private String etat;
 	
-	public Element(Long z, String nom, String nom_courant, Integer famille_id, Integer masse_atomique, String etat) {
-		this.z = z;
+	public Element(Long elementId, String nom, String nomCourant, Famille familleId, Integer masseAtomique, String etat) {
+		this.elementId = elementId;
 		this.nom = nom;
-		this.nom_courant = nom_courant;
-		this.famille_id = famille_id;
-		this.masse_atomique = masse_atomique;
+		this.nomCourant = nomCourant;
+		this.familleId = familleId;
+		this.masseAtomique = masseAtomique;
 		this.etat = etat;	
 	}
 	
@@ -29,12 +40,12 @@ import javax.persistence.Table;
 
 	}
 	
-	public Long getZ() {
-		return z;
+	public Long getElementId() {
+		return elementId;
 	}
 	
-	public void setZ(Long z) {
-		this.z = z;
+	public void setElementId(Long elementId) {
+		this.elementId = elementId;
 	}
 	
 	public String getNom() {
@@ -45,28 +56,28 @@ import javax.persistence.Table;
 		this.nom = nom;
 	}
 	
-	public String getNom_courant() {
-		return nom_courant;
+	public String getNomCourant() {
+		return nomCourant;
 	}
 	
-	public void setNom_courant(String nom_courant) {
-		this.nom_courant = nom_courant;
+	public void setNomCourant(String nomCourant) {
+		this.nomCourant = nomCourant;
 	}
 	
-	public Integer getFamille_id() {
-		return famille_id;
+	public Famille getFamilleId() {
+		return familleId;
 	}
 	
-	public void setFamille_id(Integer famille_id) {
-		this.famille_id = famille_id;
+	public void setFamilleId(Famille familleId) {
+		this.familleId = familleId;
 	}
 	
-	public Integer getMasse_atomique() {
-		return masse_atomique;
+	public Integer getMasseAtomique() {
+		return masseAtomique;
 	}
 	
-	public void setMasse_atomique(Integer masse_atomique) {
-		this.masse_atomique = masse_atomique;
+	public void setMasseAtomique(Integer masseAtomique) {
+		this.masseAtomique = masseAtomique;
 	}
 	
 	public String getEtat() {
@@ -79,7 +90,7 @@ import javax.persistence.Table;
 
 	@Override
 	public String toString() {
-		return "Element [z=" + z + ", nom=" + nom + ", nom_courant=" + nom_courant + ", masse_atomique="
-				+ masse_atomique + ", famille_id=" + famille_id + ", etat=" + etat + "]";
+		return "Element [z=" + elementId + ", nom=" + nom + ", nom_courant=" + nomCourant + ", masse_atomique="
+				+ masseAtomique + ", famille_id=" + familleId + ", etat=" + etat + "]";
 	}
 }

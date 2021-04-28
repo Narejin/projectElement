@@ -1,4 +1,4 @@
-package com.projectmiage.projectone.repository;
+package com.projectmiage.projectone.services;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import com.projectmiage.projectone.entity.Famille;
 import com.projectmiage.projectone.interfaces.IFamilleRepository;
 
 @Service
-public class FamilleRepository {
+public class FamilleService {
 	
 	@Autowired
 	IFamilleRepository repository;
@@ -20,4 +20,5 @@ public class FamilleRepository {
 	public Famille getFamille(Long id) {
 		return repository.getOne(id);
 	}
+
 }
