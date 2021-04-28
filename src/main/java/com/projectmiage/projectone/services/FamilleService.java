@@ -1,34 +1,34 @@
-package com.projectmiage.projectone.repository;
+package com.projectmiage.projectone.services;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.projectmiage.projectone.entity.Famille;
+import com.projectmiage.projectone.entities.FamilleEntity;
 import com.projectmiage.projectone.interfaces.IFamilleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FamilleRepository {
+public class FamilleService {
 	
 	@Autowired
 	IFamilleRepository repository;
 	
-	public List<Famille> getFamilles() {
+	public List<FamilleEntity> getFamilles() {
 		return this.repository.findAll();
 	}
 	
-	public Optional<Famille> getFamille(Long id) {
+	public Optional<FamilleEntity> getFamille(Long id) {
 		return this.repository.findById(id);
 	}
 
-	public void postFamille(Famille famille) {
-		this.repository.save(famille);
+	public void postFamille(FamilleEntity familleEntity) {
+		this.repository.save(familleEntity);
 	}
 
-	public void updateFamille(Famille famille) {
-		this.repository.save(famille);
+	public void updateFamille(FamilleEntity familleEntity) {
+		this.repository.save(familleEntity);
 	}
 
 	public String deleteFamille(Long id) {

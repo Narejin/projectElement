@@ -1,27 +1,27 @@
-package com.projectmiage.projectone.services;
+package com.projectmiage.projectone.controllers;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.projectmiage.projectone.entity.Element;
-import com.projectmiage.projectone.repository.ElementRepository;
+import com.projectmiage.projectone.entities.ElementEntity;
+import com.projectmiage.projectone.services.ElementService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class ElementServices {
+public class ElementController {
 
     @Autowired
-    ElementRepository elementRepository;
+    ElementService elementService;
 
     /**
      * Extrait tous les éléments.
      * @return List<Element>.
      */
     @GetMapping("/getElements")
-    public List<Element> getAllElements() {
-        return this.elementRepository.getElements();
+    public List<ElementEntity> getAllElements() {
+        return this.elementService.getElements();
     }
 
     /**
@@ -30,30 +30,30 @@ public class ElementServices {
      * @return Element.
      */
     @GetMapping("/getElement/{id}")
-    public Optional<Element> getOneElement(@PathVariable Long id) {
-        return this.elementRepository.getElement(id);
+    public Optional<ElementEntity> getOneElement(@PathVariable Long id) {
+        return this.elementService.getElement(id);
     }
 
     /**
      * Enregistre un élément.
-     * @param element
+     * @param elementEntity
      * @return String
      */
     @PostMapping(path = "/postElement", consumes = "application/json")
-    public String postElement(@RequestBody Element element) {
-        this.elementRepository.postElement(element);
-        return "L'élément " + element.getNomCourant() + " à été ajouté";
+    public String postElement(@RequestBody ElementEntity elementEntity) {
+        this.elementService.postElement(elementEntity);
+        return "L'élément " + elementEntity.getNomCourant() + " à été ajouté";
     }
 
     /**
      * Modifie un élément.
-     * @param element
+     * @param elementEntity
      * @return String
      */
     @PutMapping(path = "/updateElement", consumes = "application/json")
-    public String updateElement(@RequestBody Element element) {
-        this.elementRepository.updateElement(element);
-        return "L'élément à été modifié en " + element.getNomCourant();
+    public String updateElement(@RequestBody ElementEntity elementEntity) {
+        this.elementService.updateElement(elementEntity);
+        return "L'élément à été modifié en " + elementEntity.getNomCourant();
     }
 
     /**
@@ -63,7 +63,7 @@ public class ElementServices {
      */
     @DeleteMapping(path = "/deleteElement/{id}")
     public String deleteElement(@PathVariable Long id) {
-        String nom = this.elementRepository.deleteElement(id);
+        String nom = this.elementService.deleteElement(id);
         return "L'élément " + nom + " à été supprimé";
     }
 }

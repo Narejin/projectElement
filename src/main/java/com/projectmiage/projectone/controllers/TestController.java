@@ -1,10 +1,10 @@
-package com.projectmiage.projectone.services;
+package com.projectmiage.projectone.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class TestServices {
+public class TestController {
 
     /**
      * Donne une réponse "Services REST OK" si les services sont actifs.

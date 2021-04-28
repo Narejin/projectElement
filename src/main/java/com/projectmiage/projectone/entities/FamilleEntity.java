@@ -1,10 +1,10 @@
-package com.projectmiage.projectone.entity;
+package com.projectmiage.projectone.entities;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "famille")
-public class Famille {
+public class FamilleEntity {
 
 	@Id	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -13,12 +13,12 @@ public class Famille {
 	@Column(name = "nom")
 	private String nom;
 
-	public Famille(Long familleId, String nom) {
+	public FamilleEntity(Long familleId, String nom) {
 		this.familleId = familleId;
 		this.nom = nom;
 	}
 	
-	public Famille() {
+	public FamilleEntity() {
 
 	}
 

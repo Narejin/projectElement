@@ -1,34 +1,34 @@
-package com.projectmiage.projectone.repository;
+package com.projectmiage.projectone.services;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.projectmiage.projectone.entity.Element;
+import com.projectmiage.projectone.entities.ElementEntity;
 import com.projectmiage.projectone.interfaces.IElementRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ElementRepository {
+public class ElementService {
 	
 	@Autowired
 	IElementRepository repository;
 
-	public List<Element> getElements() {
+	public List<ElementEntity> getElements() {
 		return this.repository.findAll();
 	}
 
-	public Optional<Element> getElement(Long id) {
+	public Optional<ElementEntity> getElement(Long id) {
 		return this.repository.findById(id);
 	}
 
-	public void postElement(Element element) {
-		this.repository.save(element);
+	public void postElement(ElementEntity elementEntity) {
+		this.repository.save(elementEntity);
 	}
 
-	public void updateElement(Element element) {
-		this.repository.save(element);
+	public void updateElement(ElementEntity elementEntity) {
+		this.repository.save(elementEntity);
 	}
 
 	public String deleteElement(Long id) {
