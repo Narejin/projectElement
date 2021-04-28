@@ -1,4 +1,4 @@
-package com.projectmiage.projectone.entity;
+package com.projectmiage.projectone.entities;
 
 import javax.persistence.*;
 
@@ -24,15 +24,15 @@ import javax.persistence.*;
 
 	@ManyToOne
 	@JoinColumn(name = "famille_id")
-	private FamilleEntity familleEntityId;
+	private FamilleEntity familleId;
 
-	public ElementEntity(Long elementId, String nom, String nomCourant, Integer masseAtomique, String etat, FamilleEntity famille_Entity_id) {
+	public ElementEntity(Long elementId, String nom, String nomCourant, Integer masseAtomique, String etat, FamilleEntity familleId) {
 		this.elementId = elementId;
 		this.nom = nom;
 		this.nomCourant = nomCourant;
 		this.masseAtomique = masseAtomique;
 		this.etat = etat;
-		this.familleEntityId = familleEntityId;
+		this.familleId = familleId;
 	}
 
 	public ElementEntity() {
@@ -80,10 +80,10 @@ import javax.persistence.*;
 	}
 
 	public FamilleEntity getFamilleId() {
-		return familleEntityId;
+		return familleId;
 	}
 
-	public void setFamilleId(FamilleEntity familleEntityId) {
-		this.familleEntityId = familleEntityId;
+	public void setFamilleId(FamilleEntity familleId) {
+		this.familleId = familleId;
 	}
 }
