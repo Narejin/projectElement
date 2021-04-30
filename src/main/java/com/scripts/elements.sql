@@ -1,12 +1,15 @@
 -- Script SQL --
 -- Création de la Base de données éléments --
 
+DROP DATABASE Elements;
+
 CREATE DATABASE Elements;
 USE Elements;
 
 CREATE TABLE Famille (
         id smallint(5) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT, 
-        nom varchar(25) NOT NULL
+        nom varchar(25) NOT NULL,
+        particularite varchar (250) DEFAULT NULL
 );
 
 CREATE TABLE Element (
@@ -24,15 +27,17 @@ ALTER TABLE element
 ALTER TABLE element 
         ADD CONSTRAINT fk_famille_id_to_id FOREIGN KEY (famille_id) REFERENCES famille(id);
 
-INSERT INTO `famille`(`id`, `nom`) VALUES (1,'Métal Alcalin');
-INSERT INTO `famille`(`id`, `nom`) VALUES (2,'Métal Alcalino-terreux');
-INSERT INTO `famille`(`id`, `nom`) VALUES (3,'Métal de Transition');
-INSERT INTO `famille`(`id`, `nom`) VALUES (4,'Métal Pauvre');
-INSERT INTO `famille`(`id`, `nom`) VALUES (5,'Métalloïde');
-INSERT INTO `famille`(`id`, `nom`) VALUES (6,'Non Métaux');
-INSERT INTO `famille`(`id`, `nom`) VALUES (7,'Gaz Noble');
-INSERT INTO `famille`(`id`, `nom`) VALUES (8,'Lanthanide');
-INSERT INTO `famille`(`id`, `nom`) VALUES (9,'Actinide');
+ALTER TABLE `famille` ADD UNIQUE(`nom`);
+
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (1,'Métal Alcalin', NULL);
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (2,'Métal Alcalino-terreux', NULL);
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (3,'Métal de Transition', NULL);
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (4,'Métal Pauvre', NULL);
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (5,'Métalloïde', NULL);
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (6,'Non Métaux', NULL);
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (7,'Gaz Noble', NULL);
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (8,'Lanthanide', NULL);
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (9,'Actinide', NULL);
 
 INSERT INTO `element`(`z`, `nom`, `nom_courant`, `masse_atomique`, `famille_id`, `etat`) VALUES (1,'H','Hydrogène',1.008,6,'Gaz');
 INSERT INTO `element`(`z`, `nom`, `nom_courant`, `masse_atomique`, `famille_id`, `etat`) VALUES (6,'C','Carbone',12.011,6,'Solide');
