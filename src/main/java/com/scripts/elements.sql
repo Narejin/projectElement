@@ -29,15 +29,15 @@ ALTER TABLE element
 
 ALTER TABLE `famille` ADD UNIQUE(`nom`);
 
-INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (1,'Métal Alcalin', NULL);
-INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (2,'Métal Alcalino-terreux', NULL);
-INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (3,'Métal de Transition', NULL);
-INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (4,'Métal Pauvre', NULL);
-INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (5,'Métalloïde', NULL);
-INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (6,'Non Métaux', NULL);
-INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (7,'Gaz Noble', NULL);
-INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (8,'Lanthanide', NULL);
-INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (9,'Actinide', NULL);
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (1,'Métal Alcalin','Métaux ayant qu''un seul élection S sur leur couche de valence');
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (2,'Métal Alcalino-terreux','Métaux permettant de former des cations divalent');
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (3,'Métal de Transition','Elément chimique dont les atomes ont une sous-couche électronique d incomplète');
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (4,'Métal Pauvre','Métaux mous ou fragiles et à la résistance mécanique médiocre');
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (5,'Métalloïde','Elément chimique dont les propriétés sont intermédiaires entre celles des métaux et des non-métaux ou sont une combinaison de ces propriétés');
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (6,'Non Métaux','Elément chimique dont les atomes du corps simple sont unis par des liaisons covalentes');
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (7,'Gaz Noble','Elément dont la couche de valence est complètement saturée');
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (8,'Lanthanide','Propriété chimique très semblable à l''élément Lanthane');
+INSERT INTO `famille`(`id`, `nom`, `particularite`) VALUES (9,'Actinide','Rayon atomique et ionique très élevé');
 
 INSERT INTO `element`(`z`, `nom`, `nom_courant`, `masse_atomique`, `famille_id`, `etat`) VALUES (1,'H','Hydrogène',1.008,6,'Gaz');
 INSERT INTO `element`(`z`, `nom`, `nom_courant`, `masse_atomique`, `famille_id`, `etat`) VALUES (6,'C','Carbone',12.011,6,'Solide');
@@ -147,3 +147,4 @@ INSERT INTO `element`(`z`, `nom`, `nom_courant`, `masse_atomique`, `famille_id`,
 INSERT INTO `element`(`z`, `nom`, `nom_courant`, `masse_atomique`, `famille_id`, `etat`) VALUES (106,'Sg','Saeborgium',269,3,NULL);
 INSERT INTO `element`(`z`, `nom`, `nom_courant`, `masse_atomique`, `famille_id`, `etat`) VALUES (107,'Bh','Bohrium',270,3,NULL);
 INSERT INTO `element`(`z`, `nom`, `nom_courant`, `masse_atomique`, `famille_id`, `etat`) VALUES (108,'Hs','Hassium',277,3,NULL);
+INSERT INTO `element`(`z`, `nom`, `nom_courant`, `masse_atomique`, `famille_id`, `etat`) VALUES (109,'Mt','Meiténium',278,NULL,NULL);
