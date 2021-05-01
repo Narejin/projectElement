@@ -7,6 +7,8 @@ import com.projectmiage.projectone.entities.ElementEntity;
 import com.projectmiage.projectone.services.ElementService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,21 +19,30 @@ public class ElementController {
 
     /**
      * Extrait tous les éléments.
-     * @return List<Element>.
+     * @return List<ElementEntity>.
      */
     @GetMapping("/getElements")
-    public List<ElementEntity> getAllElements() {
-        return this.elementService.getElements();
+    public ResponseEntity<List<ElementEntity>> getAllElements() {
+        return new ResponseEntity<>(this.elementService.getElements(), HttpStatus.OK);
+    }
+
+    /**
+     * Extrait tous les éléments selon la famille.
+     * @return List<ElementEntity>.
+     */
+    @GetMapping("/getElements/{familleId}")
+    public ResponseEntity<List<ElementEntity>> getElementsByFamilleId(@PathVariable Long familleId) {
+        return new ResponseEntity<>(this.elementService.getElementsByFamilleId(familleId), HttpStatus.OK);
     }
 
     /**
      * Extrait un élement selon son Z.
      * @param id
-     * @return Element.
+     * @return ElementEntity.
      */
     @GetMapping("/getElement/{id}")
-    public Optional<ElementEntity> getOneElement(@PathVariable Long id) {
-        return this.elementService.getElement(id);
+    public ResponseEntity<Optional<ElementEntity>> getOneElement(@PathVariable Long id) {
+        return new ResponseEntity<>(this.elementService.getElement(id), HttpStatus.OK);
     }
 
     /**
@@ -40,9 +51,9 @@ public class ElementController {
      * @return String
      */
     @PostMapping(path = "/postElement", consumes = "application/json")
-    public String postElement(@RequestBody ElementEntity elementEntity) {
+    public ResponseEntity<String> postElement(@RequestBody ElementEntity elementEntity) {
         this.elementService.postElement(elementEntity);
-        return "L'élément " + elementEntity.getNomCourant() + " à été ajouté";
+        return new ResponseEntity<>("L'élément " + elementEntity.getNomCourant() + " à été ajouté", HttpStatus.CREATED);
     }
 
     /**
@@ -51,9 +62,9 @@ public class ElementController {
      * @return String
      */
     @PutMapping(path = "/updateElement", consumes = "application/json")
-    public String updateElement(@RequestBody ElementEntity elementEntity) {
+    public ResponseEntity<String> updateElement(@RequestBody ElementEntity elementEntity) {
         this.elementService.updateElement(elementEntity);
-        return "L'élément à été modifié en " + elementEntity.getNomCourant();
+        return new ResponseEntity<>("L'élément à été modifié en " + elementEntity.getNomCourant(), HttpStatus.OK);
     }
 
     /**
@@ -62,8 +73,8 @@ public class ElementController {
      * @return String
      */
     @DeleteMapping(path = "/deleteElement/{id}")
-    public String deleteElement(@PathVariable Long id) {
+    public ResponseEntity<String> deleteElement(@PathVariable Long id) {
         String nom = this.elementService.deleteElement(id);
-        return "L'élément " + nom + " à été supprimé";
+        return new ResponseEntity<>("L'élément " + nom + " à été supprimé", HttpStatus.OK);
     }
 }

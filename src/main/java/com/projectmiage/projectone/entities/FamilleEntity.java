@@ -1,6 +1,8 @@
 package com.projectmiage.projectone.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "famille")
@@ -13,9 +15,16 @@ public class FamilleEntity {
 	@Column(name = "nom")
 	private String nom;
 
-	public FamilleEntity(Long familleId, String nom) {
+	@Column(name = "particularite")
+	private String particularite;
+
+	@OneToMany(mappedBy = "familleId")
+	private List<ElementEntity> elementEntityList = new ArrayList<>();
+
+	public FamilleEntity(Long familleId, String nom, String particularite) {
 		this.familleId = familleId;
 		this.nom = nom;
+		this.particularite = particularite;
 	}
 	
 	public FamilleEntity() {
@@ -38,9 +47,20 @@ public class FamilleEntity {
 		this.nom = nom;
 	}
 
+	public String getParticularite() {
+		return particularite;
+	}
+
+	public void setParticularite(String particularite) {
+		this.particularite = particularite;
+	}
+
 	@Override
 	public String toString() {
-		return "Famille [familleId=" + familleId + ", nom=" + nom + "]";
+		return "FamilleEntity{" +
+				"familleId=" + familleId +
+				", nom='" + nom + '\'' +
+				", particularite='" + particularite + '\'' +
+				'}';
 	}
-	
 }

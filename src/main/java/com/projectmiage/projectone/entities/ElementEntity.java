@@ -22,7 +22,7 @@ import javax.persistence.*;
 	@Column(name = "etat")
 	private String etat;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "famille_id")
 	private FamilleEntity familleId;
 
@@ -85,5 +85,17 @@ import javax.persistence.*;
 
 	public void setFamilleId(FamilleEntity familleId) {
 		this.familleId = familleId;
+	}
+
+	@Override
+	public String toString() {
+		return "ElementEntity{" +
+				"elementId=" + elementId +
+				", nom='" + nom + '\'' +
+				", nomCourant='" + nomCourant + '\'' +
+				", masseAtomique=" + masseAtomique +
+				", etat='" + etat + '\'' +
+				", familleId=" + familleId +
+				'}';
 	}
 }

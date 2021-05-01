@@ -37,4 +37,9 @@ public class FamilleService {
 		return nom;
 	}
 
+	public void updateParticulariteFamille(FamilleEntity familleEntity) {
+		Optional<FamilleEntity> famille = this.getFamille(familleEntity.getFamilleId());
+		familleEntity.setNom(famille.get().getNom());
+		this.repository.save(familleEntity);
+	}
 }

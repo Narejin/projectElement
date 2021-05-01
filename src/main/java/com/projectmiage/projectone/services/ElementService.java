@@ -36,4 +36,8 @@ public class ElementService {
 		this.repository.deleteById(id);
 		return nom;
 	}
+
+    public List<ElementEntity> getElementsByFamilleId(Long familleId) {
+		return this.repository.findByFamilleId(familleId);
+	}
 }
