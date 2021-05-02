@@ -3,6 +3,8 @@ package com.projectmiage.projectone;
 import java.util.List;
 import java.util.Optional;
 
+import com.projectmiage.projectone.entity.Element;
+import com.projectmiage.projectone.services.ElementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,19 +20,28 @@ public class ProjectoneApplication {
 	FamilleService familleService;
 	private Famille famille;
 
+	@Autowired
+	ElementService elementService;
+	private Element element;
+
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectoneApplication.class, args);
 	}
+
+	/**
+	 * Mapping test OK
+	 * @return String
+	 */
 
 	@GetMapping("/helloWorld")
 	public String getHelloWorld() {
 		return "Pour le moment, ça marche t'inquiète.";
 	}
 
-	/**@GetMapping("/helloWorld/{text}")
-	public String getUserText(@PathVariable String text) {
-		return text;
-	}*/
+	/**
+	 * Mapping de l'entité Famille
+	 * @return String, Famille
+	 */
 
 	@GetMapping("/getFamilles")
 	public List<Famille> getAllFamilles() {
@@ -49,14 +60,68 @@ public class ProjectoneApplication {
 
 	@PostMapping("/postFamille")
 	public String saveFamille(@RequestBody Famille famille) {
-		this.familleService.postFamille(famille);
-		return "La famille " + famille.getNom() + " a bien été ajoutée.";
+		String nom = familleService.postFamille(famille).getNom();
+		return "La famille " + nom + " a bien été ajoutée.";
 	}
 
 	@DeleteMapping("/deleteFamille/{id}")
 	public String deleteFamille(@PathVariable Long id) {
-		String nom = this.familleService.deleteFamille(id);
+		String nom = familleService.deleteFamille(id);
 		return "La famille " + nom + " a bien été supprimée.";
+	}
+
+	@PutMapping("/updateFamille")
+	public String putFamille (@RequestBody Famille famille) {
+		String nom = familleService.putFamille(famille).getNom();
+		return "La famille " + nom + " a bien été mise à jour.";
+	}
+
+	/**
+	 * Mapping de l'entité Element
+	 * @return String, Element
+	 */
+
+	@GetMapping("/getElements")
+	public List<Element> getAllElements() {
+		return elementService.getElements();
+	}
+
+	@GetMapping("/getElementId/{id}")
+	public Optional<Element> getOneElement(@PathVariable Long id) {
+		return elementService.getElement(id);
+	}
+
+	@GetMapping("/getElementNom/{nom}")
+	public Optional<Element> getOneElementByNom(@PathVariable String nom) {
+		return elementService.getElementByNom(nom);
+	}
+
+	@GetMapping("/getElementNomCourant/{nom}")
+	public Optional<Element> getOneElementByNomCourant(@PathVariable String nom) {
+		return elementService.getElementByNomCourant(nom);
+	}
+
+	@GetMapping("/getElementByFamille/{familleId}")
+	public List<Element> getElementByFamille(@PathVariable Long familleId) {
+		return elementService.getElementFamille(familleId);
+	}
+
+	@PostMapping("postElement")
+	public String saveElement (@RequestBody Element element) {
+		String nom = elementService.postElement(element).getNom();
+		return "L'élément " + nom + " a bien été ajouté.";
+	}
+
+	@DeleteMapping("/deleteElement/{id}")
+	public String deleteElement (@PathVariable Long id) {
+		String nom = elementService.deleteElement(id);
+		return "L'élément " + nom + " a bien été supprimé";
+	}
+
+	@PutMapping("/updateElement")
+	public String updateElement (@RequestBody Element element) {
+		String nom = elementService.updateElement(element).getNom();
+		return "L'élément " + nom + " a bien été modifié";
 	}
 }
 

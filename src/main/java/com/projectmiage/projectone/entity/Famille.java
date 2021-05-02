@@ -43,7 +43,7 @@ public class Famille {
 		return particularite;
 	}
 
-	public void setParticularite(String Particularite) {
+	public void setParticularite(String particularite) {
 		this.particularite = particularite;
 	}
 

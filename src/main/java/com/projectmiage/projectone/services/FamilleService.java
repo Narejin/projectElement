@@ -3,6 +3,7 @@ package com.projectmiage.projectone.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.projectmiage.projectone.entity.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.projectmiage.projectone.entity.Famille;
@@ -31,8 +32,13 @@ public class FamilleService {
 	}
 
 	public String deleteFamille(Long id) {
-		String nom = this.getFamille(id).get().getNom();
-		this.repository.deleteById(id);
+		String nom = getFamille(id).get().getNom();
+		repository.deleteById(id);
 		return nom;
 	}
+
+	public Famille putFamille(Famille famille) {
+		return repository.save(famille);
+	}
+
 }
