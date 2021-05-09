@@ -21,6 +21,19 @@ CREATE TABLE Element (
         etat varchar(10)
 );
 
+CREATE TABLE Mot (
+        id smallint(5) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        mot varchar(50) NOT NULL,
+        elements varchar(250) NOT NULL
+);
+
+CREATE TABLE Jeu (
+        id smallint(5) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        joueur varchar(50) NOT NULL,
+        motTrouve varchar(50) NOT NULL,
+        date DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 ALTER TABLE element
         ADD INDEX(famille_id);
 
@@ -148,3 +161,14 @@ INSERT INTO `element`(`z`, `nom`, `nom_courant`, `masse_atomique`, `famille_id`,
 INSERT INTO `element`(`z`, `nom`, `nom_courant`, `masse_atomique`, `famille_id`, `etat`) VALUES (107,'Bh','Bohrium',270,3,NULL);
 INSERT INTO `element`(`z`, `nom`, `nom_courant`, `masse_atomique`, `famille_id`, `etat`) VALUES (108,'Hs','Hassium',277,3,NULL);
 INSERT INTO `element`(`z`, `nom`, `nom_courant`, `masse_atomique`, `famille_id`, `etat`) VALUES (109,'Mt','Meiténium',278,NULL,NULL);
+
+INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (1,'Nice','Ce Ni');
+INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (2,'Geinus','I Ge U N S');
+INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (3,'Chocolate','Te HO C Co La');
+INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (4,'Ambition','B N O I Ti Am');
+INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (5,'Infinite','Te I F In I N');
+INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (6,'Cookies','Es K I O Co');
+INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (7,'Coffe','F Co Fe');
+INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (8,'Chess','S C Es H');
+INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (9,'Sarcasm','Ca Ar S Sm');
+INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (10,'Teacher','Ac Er H Te');

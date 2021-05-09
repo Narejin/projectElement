@@ -33,9 +33,9 @@ public class ElementService {
 		return repository.findByNomCourant(nom);
 	}
 
-	public List<Element> getElementFamille(Long familleId) {
+	/*public List<Element> getElementFamille(Long familleId) {
 		return repository.findByFamilleId(familleId);
-	}
+	}*/
 
 	public Element postElement(Element element) {
 		return repository.save(element);

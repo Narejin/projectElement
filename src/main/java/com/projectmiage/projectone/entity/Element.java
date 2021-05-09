@@ -2,6 +2,7 @@ package com.projectmiage.projectone.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,7 +21,7 @@ import javax.persistence.Table;
 	private String nomCourant;
 	@Column	(name = "masse_atomique")
 	private Integer masseAtomique;
-	@ManyToOne	@JoinColumn (name = "famille_id")
+	@ManyToOne	@JoinColumn (name = "famille_id", referencedColumnName = "id", foreignKey = @ForeignKey(name ="fk_famille_id_to_id"))
 	private Famille familleId;
 	@Column	(name ="etat")
 	private String etat;
@@ -86,9 +87,9 @@ import javax.persistence.Table;
 		this.etat = etat;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "Element [z=" + elementId + ", nom=" + nom + ", nom_courant=" + nomCourant + ", masse_atomique="
 				+ masseAtomique + ", famille_id=" + familleId + ", etat=" + etat + "]";
-	}
+	}*/
 }

@@ -1,34 +1,38 @@
 package com.projectmiage.projectone.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "famille")
 public class Famille {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
 	@Column(name = "nom")
 	private String nom;
 	@Column(name = "particularite")
 	private String particularite;
-	
-	public Famille(Long id, String nom, String particularite) {
-		this.id = id;
+
+	@OneToMany(targetEntity = Element.class, orphanRemoval = true, mappedBy = "familleId", fetch = FetchType.LAZY)
+	private List<Element> element;
+
+
+	public Famille(String nom, String particularite) {
 		this.nom = nom;
 		this.particularite = particularite;
 	}
 	
 	public Famille() {
 
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getNom() {
@@ -47,9 +51,9 @@ public class Famille {
 		this.particularite = particularite;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "Famille [id=" + id + ", nom=" + nom + ", particularite=" + particularite + "]";
-	}
+	}*/
 	
 }

@@ -4,7 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import com.projectmiage.projectone.entity.Element;
+import com.projectmiage.projectone.entity.Jeu;
+import com.projectmiage.projectone.entity.Mot;
 import com.projectmiage.projectone.services.ElementService;
+import com.projectmiage.projectone.services.JeuService;
+import com.projectmiage.projectone.services.MotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,6 +27,14 @@ public class ProjectoneApplication {
 	@Autowired
 	ElementService elementService;
 	private Element element;
+
+	@Autowired
+	MotService motService;
+	private Mot mot;
+
+	@Autowired
+	JeuService jeuService;
+	private Jeu jeu;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectoneApplication.class, args);
@@ -101,10 +113,10 @@ public class ProjectoneApplication {
 		return elementService.getElementByNomCourant(nom);
 	}
 
-	@GetMapping("/getElementByFamille/{familleId}")
+	/*@GetMapping("/getElementByFamille/{familleId}")
 	public List<Element> getElementByFamille(@PathVariable Long familleId) {
 		return elementService.getElementFamille(familleId);
-	}
+	}*/
 
 	@PostMapping("postElement")
 	public String saveElement (@RequestBody Element element) {
@@ -123,5 +135,26 @@ public class ProjectoneApplication {
 		String nom = elementService.updateElement(element).getNom();
 		return "L'élément " + nom + " a bien été modifié";
 	}
+
+	/**
+	 * Mapping de l'entité Mot
+	 * @return Mot
+	 */
+
+	@GetMapping("/getRandomMot")
+	public Optional<Mot> getOneRandomMot() {
+		return motService.getRandomMot();
+	}
+
+	/**
+	 * Mapping de l'entité Jeu
+	 * @return String
+	 */
+
+	/*@PostMapping("postMot")
+	public String saveMot (@RequestBody Jeu jeu) {
+		String nom = jeuService.postMot(jeu).getMotTrouve();
+		return "Félicitation !!! Vous avez trouvé le mot !";
+	}*/
 }
 
