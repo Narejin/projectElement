@@ -151,6 +151,11 @@ public class ProjectoneApplication {
 	 * @return String
 	 */
 
+	@GetMapping("/getMots")
+	public List<Jeu> getAllMot() {
+		return jeuService.getMots();
+	}
+
 	@PostMapping("postMot")
 	public String saveMot (@RequestBody Jeu jeu) {
 		String nom = jeuService.postMot(jeu).getMotTrouve();
