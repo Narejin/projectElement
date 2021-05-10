@@ -30,7 +30,7 @@ CREATE TABLE Mot (
 CREATE TABLE Jeu (
         id smallint(5) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
         joueur varchar(50) NOT NULL,
-        motTrouve varchar(50) NOT NULL,
+        mot_trouve varchar(50) NOT NULL,
         date DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

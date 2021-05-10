@@ -151,10 +151,10 @@ public class ProjectoneApplication {
 	 * @return String
 	 */
 
-	/*@PostMapping("postMot")
+	@PostMapping("postMot")
 	public String saveMot (@RequestBody Jeu jeu) {
 		String nom = jeuService.postMot(jeu).getMotTrouve();
-		return "Félicitation !!! Vous avez trouvé le mot !";
-	}*/
+		return "Félicitation !!! Vous avez trouvé le mot " + nom + " !!";
+	}
 }
 

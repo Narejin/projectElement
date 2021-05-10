@@ -16,7 +16,7 @@ public class Jeu {
     private long id;
     @Column(name ="joueur")
     private String joueur;
-    @Column(name ="motTrouve")
+    @Column(name ="mot_trouve")
     private String motTrouve;
     @Column(name = "date")
     private Date date;
