@@ -10,5 +10,6 @@ import java.util.Optional;
 public interface IMotRepository extends JpaRepository<Mot, Long> {
 
     Optional<Mot> findById(Long id);
+    Optional<Mot> findByMot(String mot);
 
 }

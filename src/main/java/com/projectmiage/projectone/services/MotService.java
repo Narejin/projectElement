@@ -21,4 +21,8 @@ public class MotService {
         return repository.findById((long) nb);
 
     }
+
+    public Optional<Mot> getMotByMot(String mot) {
+        return repository.findByMot(mot);
+    }
 }

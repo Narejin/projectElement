@@ -164,7 +164,7 @@ INSERT INTO `element`(`z`, `nom`, `nom_courant`, `masse_atomique`, `famille_id`,
 
 INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (1,'Nice','Ce Ni');
 INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (2,'Geinus','I Ge U N S');
-INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (3,'Chocolate','Te HO C Co La');
+INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (3,'Chocolate','Te H O C Co La');
 INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (4,'Ambition','B N O I Ti Am');
 INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (5,'Infinite','Te I F In I N');
 INSERT INTO `mot`(`id`, `mot`, `elements`) VALUES (6,'Cookies','Es K I O Co');

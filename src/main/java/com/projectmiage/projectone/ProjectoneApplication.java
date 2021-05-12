@@ -146,6 +146,11 @@ public class ProjectoneApplication {
 		return motService.getRandomMot();
 	}
 
+	@GetMapping("/getOneMot/{mot}")
+	public Optional<Mot> getMotByMot (@PathVariable String mot) {
+		return motService.getMotByMot(mot);
+	}
+
 	/**
 	 * Mapping de l'entité Jeu
 	 * @return String
@@ -156,10 +161,14 @@ public class ProjectoneApplication {
 		return jeuService.getMots();
 	}
 
-	@PostMapping("postMot")
+	@GetMapping("/getMotInJeu/{mot}")
+	public Optional<Jeu> getOneMotInJeu (@PathVariable String mot) {
+		return jeuService.getJeuByMot(mot);
+	}
+
+	@PostMapping("/postMot")
 	public String saveMot (@RequestBody Jeu jeu) {
-		String nom = jeuService.postMot(jeu).getMotTrouve();
-		return "Félicitation !!! Vous avez trouvé le mot " + nom + " !!";
+		return jeuService.postMot(jeu);
 	}
 }
 
