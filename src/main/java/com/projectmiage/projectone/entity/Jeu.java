@@ -1,13 +1,6 @@
 package com.projectmiage.projectone.entity;
 
-import org.hibernate.annotations.Generated;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -22,6 +15,16 @@ public class Jeu {
     private String motTrouve;
     @Column(name = "date")
     private Date date;
+
+    @PrePersist
+    protected void onCreate() {
+        date = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        date = new Date();
+    }
 
     public Jeu(long id, String joueur, String motTrouve, Date date) {
         this.id = id;

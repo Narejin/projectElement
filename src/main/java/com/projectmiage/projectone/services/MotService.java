@@ -19,7 +19,6 @@ public class MotService {
         Random random = new Random();
         int nb = 1 +random.nextInt((int) (repository.count()));
         return repository.findById((long) nb);
-
     }
 
     public Optional<Mot> getMotByMot(String mot) {
